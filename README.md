@@ -6,7 +6,13 @@ It's basically a WebSocket client and server where the client sends heartbeats a
 
 When using the client library you specify an ```ApplicationName``` that is used with ```MachineName``` and ```Username``` to provide lists on the web site. In addition there en a ```onSendingHeartbeat``` hook that allows you to provide a custom ```Dictionary<string, object>``` to send with the heartbeat.
 
-It is very crude an not tested that much :)
+It is very crude and not tested that much, use at your own risk :)
+
+## Tech used
+
+I'm quite exited about [akka.net](https://gitter.im/akkadotnet/akka.net) and of course the new .NET Core stack, especially ASP.NET Core. So on both the client and server akka.net is the main component managing connections, hearbeats, clients etc. It works really well.
+
+On the server [Fleck](https://github.com/statianzo/Fleck) is used for the websocket server, on the client it's [websocket-sharp](https://github.com/sta/websocket-sharp)
 
 ## Why?
 

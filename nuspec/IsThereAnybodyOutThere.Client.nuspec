@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>IsThereAnybodyOutThere</id>
+    <title>IsThereAnybodyOutThere</title>
+    <version>0.0.1-beta</version>
+    <authors>Christian Sparre</authors>
+    <owners>Christian Sparre</owners>
+    <licenseUrl>https://raw.githubusercontent.com/christiansparre/IsThereAnybodyOutThere/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/christiansparre/IsThereAnybodyOutThere</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>IsThereAnybodyOutThere</description>
+    <releaseNotes></releaseNotes>
+    <dependencies>
+      <dependency id="Akka" version="1.0.6" />
+      <dependency id="Newtonsoft.Json" version="6.0.6" />
+      <dependency id="WebSocketSharp" version="1.0.3-rc10" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="src\IsThereAnybodyOutThere.Client\bin\Debug\IsThereAnybodyOutThere.Client.dll" target="lib\net45" />
+  </files>
+</package>

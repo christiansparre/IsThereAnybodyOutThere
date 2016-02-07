@@ -16,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsThereAnybodyOutThere.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsThereAnybodyOutThere.Client", "src\IsThereAnybodyOutThere.Client\IsThereAnybodyOutThere.Client.csproj", "{613BE1A5-EBDF-4B52-B49A-8EDCE0F923EB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspec", "nuspec", "{76068D2D-0BED-4A63-8210-AF7B63E917AD}"
+	ProjectSection(SolutionItems) = preProject
+		nuspec\IsThereAnybodyOutThere.Client.nuspec = nuspec\IsThereAnybodyOutThere.Client.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +47,6 @@ Global
 		{9A534E9E-B60F-424D-81B0-3967A77F0507} = {93E7610A-2607-41B5-8208-406F6D5A412C}
 		{39F5A8F4-B8A4-48E3-9BD2-1916CB9BAB80} = {93E7610A-2607-41B5-8208-406F6D5A412C}
 		{613BE1A5-EBDF-4B52-B49A-8EDCE0F923EB} = {93E7610A-2607-41B5-8208-406F6D5A412C}
+		{76068D2D-0BED-4A63-8210-AF7B63E917AD} = {D90B833F-0F58-4DD1-98BB-5A05ADA5311C}
 	EndGlobalSection
 EndGlobal

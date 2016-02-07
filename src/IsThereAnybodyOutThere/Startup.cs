@@ -33,9 +33,7 @@ namespace IsThereAnybodyOutThere
             var clientRegistry = actorSystem.ActorOf(Props.Create(() => new ClientRegistry()), "clients");
             var actorRef = actorSystem.ActorOf(Props.Create(() => new WebSocketServerActor(clientRegistry, _configuration)), "websocket");
 
-
             services.AddSingleton(s => new ClientRegistryActorRef(clientRegistry));
-
         }
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
@@ -45,7 +43,5 @@ namespace IsThereAnybodyOutThere
             app.UseStaticFiles();
             app.UseMvc();
         }
-
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

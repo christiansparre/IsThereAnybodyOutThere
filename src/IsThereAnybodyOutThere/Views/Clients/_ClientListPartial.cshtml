@@ -1,0 +1,23 @@
+﻿@model IEnumerable<IsThereAnybodyOutThere.Models.Clients.ClientModel>
+
+<div>
+    <div class="pure-g client-list-header">
+        <div class="pure-u-4-24">Id</div>
+        <div class="pure-u-4-24">Application name</div>
+        <div class="pure-u-4-24">Machine name</div>
+        <div class="pure-u-4-24">Username</div>
+        <div class="pure-u-4-24">Connected</div>
+        <div class="pure-u-4-24">Last heartbeat</div>
+    </div>
+    @foreach (var client in Model)
+    {
+        <div class="pure-g client-list-row">
+            <div class="pure-u-4-24">@client.Id</div>
+            <div class="pure-u-4-24"><a asp-action="ByApplication" asp-controller="Clients" asp-route-name="@client.ApplicationName">@client.ApplicationName</a></div>
+            <div class="pure-u-4-24"><a asp-action="ByMachine" asp-controller="Clients" asp-route-name="@client.MachineName">@client.MachineName</a></div>
+            <div class="pure-u-4-24"><a asp-action="ByUser" asp-controller="Clients" asp-route-username="@client.Username">@client.Username</a></div>
+            <div class="pure-u-4-24">@client.Connected</div>
+            <div class="pure-u-4-24">@client.LastHeartbeatReceivedAtUtc.ToLocalTime()</div>
+        </div>
+    }
+</div>

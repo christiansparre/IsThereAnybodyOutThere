@@ -1,0 +1,13 @@
+﻿@model IEnumerable<IsThereAnybodyOutThere.Models.Clients.ClientModel>
+<div class="connected">
+    <h3>
+        Connected
+    </h3>
+    @Html.Partial("_ClientListPartial", Model.Where(c => c.Connected))
+</div>
+
+<div class="disconnected">
+    <h3>Disconnected</h3>
+    <p class="info">Client instances that were online at some point</p>
+    @Html.Partial("_ClientListPartial", Model.Where(c => !c.Connected))
+</div>

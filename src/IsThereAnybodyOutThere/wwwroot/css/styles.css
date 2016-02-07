@@ -1,0 +1,47 @@
+﻿body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: .9em;
+}
+
+a {
+    color: navy;
+}
+
+.header {
+    padding: 0 20px 0 20px;
+}
+
+.header h1 {
+    margin-bottom: 0;
+}
+
+.content {
+    padding: 0 20px 0 20px;
+}
+
+.connected table {
+    width: 100%;
+}
+
+.disconnected table {
+    width: 100%;
+}
+
+.disconnected .info {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.client-list-header {
+    padding: 9px;
+    background-color: rgb(228, 228, 228);
+    border: solid 1px rgb(190, 190, 190);
+}
+
+
+.client-list-row {
+    padding: 9px;
+    border-left: solid 1px rgb(190, 190, 190);
+    border-right: solid 1px rgb(190, 190, 190);
+    border-bottom: solid 1px rgb(190, 190, 190);
+}

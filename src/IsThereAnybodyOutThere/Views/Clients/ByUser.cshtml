@@ -1,0 +1,7 @@
+﻿@model IsThereAnybodyOutThere.Models.Clients.CommonClientListViewModel
+
+<h2>
+    @ViewBag.Username
+</h2>
+<p class="info">'@ViewBag.Username' has @Model.Clients.Count(c => c.Connected) instances connected</p>
+@Html.Partial("_CommonClientListPartial", Model.Clients)

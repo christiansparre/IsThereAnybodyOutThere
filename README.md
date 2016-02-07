@@ -16,7 +16,7 @@ On the server [Fleck](https://github.com/statianzo/Fleck) is used for the websoc
 
 ## Why?
 
-At work we have a number of WPF and WinForms apps and in one of them there is a tiny feature that is not use very much, maybe every couple of months. And there's little bug where the backend service occasionally needs to be restarted for this one little button to work. Yeah I know that bug should be fixed, but, you know... priorities :) 
+At work we have a number of WPF and WinForms apps and in one of them there is a tiny feature that is not use very much, maybe every couple of months. And there's a little bug where the backend service occasionally needs to be restarted for this one little button to work. Yeah I know that bug should be fixed, but, you know... priorities :) 
 
 Anyway when this button needs pressing, we keep saying how nice it would be to know if there are actually anyone using the app. So, you know, we can restart the service without too much trouble.
 

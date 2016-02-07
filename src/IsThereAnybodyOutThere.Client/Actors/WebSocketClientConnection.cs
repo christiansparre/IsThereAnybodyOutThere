@@ -25,7 +25,7 @@ namespace IsThereAnybodyOutThere.Client.Actors
             _applicationName = applicationName;
             _heartBeatInterval = heartBeatInterval;
             _onSendingHearbeat = onSendingHearbeat;
-            _clientId = Guid.NewGuid().ToString();
+            _clientId = Guid.NewGuid().ToString("N");
 
             // Message handlers
             Receive<ConnectionOpened>(m => HandleConnectionOpened(m));

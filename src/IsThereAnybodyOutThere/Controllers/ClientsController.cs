@@ -23,6 +23,12 @@ namespace IsThereAnybodyOutThere.Controllers
             _clientRegistry = clientRegistry;
         }
 
+        [Route("")]
+        public IActionResult ReditectToIndex()
+        {
+            return RedirectToAction("Index");
+        }
+
         [Route("clients")]
         public async Task<IActionResult> Index()
         {

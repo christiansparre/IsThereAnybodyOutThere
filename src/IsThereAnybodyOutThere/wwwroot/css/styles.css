@@ -11,9 +11,9 @@ a {
     padding: 0 20px 0 20px;
 }
 
-.header h1 {
-    margin-bottom: 0;
-}
+    .header h1 {
+        margin-bottom: 0;
+    }
 
 .content {
     padding: 0 20px 0 20px;
@@ -43,5 +43,59 @@ a {
     padding: 9px;
     border-left: solid 1px rgb(190, 190, 190);
     border-right: solid 1px rgb(190, 190, 190);
+    border-bottom: solid 1px rgb(190, 190, 190);
+}
+
+.instance-info .pure-g div {
+    padding: 9px;
+}
+
+.instance-info .pure-g:first-child div {
+    border-top: solid 1px rgb(190, 190, 190);
+}
+
+.instance-info .pure-g div:last-child {
+    border-right: solid 1px rgb(190, 190, 190);
+}
+
+.instance-info .pure-g:last-child div:last-child {
+    border-bottom: solid 1px rgb(190, 190, 190);
+}
+
+.instance-info .pure-g div:first-child {
+    background: rgb(228, 228, 228);
+    border-left: solid 1px rgb(190, 190, 190);
+    border-right: solid 1px rgb(190, 190, 190);
+    border-bottom: solid 1px rgb(190, 190, 190);
+}
+
+.instance-info .pure-g div:first-child {
+    background: rgb(228, 228, 228);
+    border-right: solid 1px rgb(190, 190, 190);
+}
+
+.instance-hearbeats .pure-g {
+    border-left: solid 1px rgb(190, 190, 190);
+    
+}
+
+.instance-hearbeats .pure-g div {
+    padding: 9px;
+    border-right: solid 1px rgb(190, 190, 190);
+}
+
+.instance-hearbeats .pure-g:first-child {
+    border-right: solid 1px rgb(190, 190, 190);
+  
+}
+
+.instance-hearbeats .pure-g:first-child div {
+    background-color: rgb(228, 228, 228);
+    border-top: solid 1px rgb(190, 190, 190);
+    border-bottom: solid 1px rgb(190, 190, 190);
+}
+
+.instance-hearbeats .pure-g div {
+    
     border-bottom: solid 1px rgb(190, 190, 190);
 }

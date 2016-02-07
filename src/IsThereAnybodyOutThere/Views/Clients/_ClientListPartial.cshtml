@@ -12,7 +12,7 @@
     @foreach (var client in Model)
     {
         <div class="pure-g client-list-row">
-            <div class="pure-u-4-24">@client.Id</div>
+            <div class="pure-u-4-24"><a asp-action="Index" asp-controller="ClientInstance" asp-route-id="@client.Id">@client.Id</a></div>
             <div class="pure-u-4-24"><a asp-action="ByApplication" asp-controller="Clients" asp-route-name="@client.ApplicationName">@client.ApplicationName</a></div>
             <div class="pure-u-4-24"><a asp-action="ByMachine" asp-controller="Clients" asp-route-name="@client.MachineName">@client.MachineName</a></div>
             <div class="pure-u-4-24"><a asp-action="ByUser" asp-controller="Clients" asp-route-username="@client.Username">@client.Username</a></div>

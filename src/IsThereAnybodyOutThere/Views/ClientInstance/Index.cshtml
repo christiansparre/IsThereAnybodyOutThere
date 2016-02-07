@@ -1,0 +1,46 @@
+﻿@model IsThereAnybodyOutThere.Models.Clients.ClientModel
+
+<h2>
+    @Model.ApplicationName
+</h2>
+<div class="instance-info">
+    <div class="pure-g">
+        <div class="pure-u-2-24">Id</div>
+        <div class="pure-u-4-24">@Model.Id</div>
+    </div>
+    <div class="pure-g">
+        <div class="pure-u-2-24">Username</div>
+        <div class="pure-u-4-24">@Model.Username</div>
+    </div>
+    <div class="pure-g">
+        <div class="pure-u-2-24">Machine name</div>
+        <div class="pure-u-4-24">@Model.MachineName</div>
+    </div>
+    <div class="pure-g">
+        <div class="pure-u-2-24">Connected</div>
+        <div class="pure-u-4-24">@Model.Connected</div>
+    </div>
+    <div class="pure-g">
+        <div class="pure-u-2-24">Last heartbeat</div>
+        <div class="pure-u-4-24">@Model.LastHeartbeatReceivedAtUtc.ToLocalTime()</div>
+    </div>
+</div>
+<h3>
+    Latest heartbeats
+</h3>
+<div class="instance-hearbeats">
+    <div class="pure-g">
+        <div class="pure-u-2-24">Heartbeat</div>
+        <div class="pure-u-4-24"></div>
+    </div>
+
+    @foreach (var hb in Model.Heartbeats)
+    {
+        <div class="pure-g">
+            <div class="pure-u-2-24">@hb.ReceivedAtUtc</div>
+            <div class="pure-u-4-24"></div>
+        </div>
+    }
+
+</div>
+

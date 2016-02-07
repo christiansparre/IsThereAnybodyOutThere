@@ -1,13 +1,20 @@
 ﻿@model IEnumerable<IsThereAnybodyOutThere.Models.Clients.ClientModel>
+
+@{
+    var connected = Model.Where(c => c.Connected).ToList();
+    var disconnected = Model.Where(c => !c.Connected).ToList();
+}
 <div class="connected">
     <h3>
-        Connected
+        Connected (@connected.Count())
     </h3>
-    @Html.Partial("_ClientListPartial", Model.Where(c => c.Connected))
+    @Html.Partial("_ClientListPartial", connected)
 </div>
 
 <div class="disconnected">
-    <h3>Disconnected</h3>
+    <h3>
+        Disconnected (@disconnected.Count())
+    </h3>
     <p class="info">Client instances that were online at some point</p>
-    @Html.Partial("_ClientListPartial", Model.Where(c => !c.Connected))
+    @Html.Partial("_ClientListPartial", disconnected)
 </div>

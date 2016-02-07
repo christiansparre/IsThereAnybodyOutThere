@@ -64,7 +64,7 @@ namespace IsThereAnybodyOutThere.Actors
                 Username = c.Value.Username,
                 LastHeartbeatReceivedAtUtc = c.Value.LastHeartbeatReceivedAtUtc,
                 Connected = c.Value.Connected,
-                Heartbeats = c.Value.Heartbeats.Select(h => new Dictionary<string, object>(h)).ToList(),
+                Heartbeats = c.Value.Heartbeats.Select(h => new ClientModel.Heartbeat { ReceivedAtUtc = h.ReceivedAtUtc, Data = h.Data }).ToList(),
                 ApplicationName = c.Value.ApplicationName
             }).ToList());
         }
@@ -74,7 +74,7 @@ namespace IsThereAnybodyOutThere.Actors
             UpdateClient(message.ClientId, client =>
             {
                 client.LastHeartbeatReceivedAtUtc = message.ReceivedAtUtc;
-                client.Heartbeats.Insert(0, message.Heartbeat);
+                client.Heartbeats.Insert(0, new Client.Heartbeat { ReceivedAtUtc = message.ReceivedAtUtc, Data = message.Heartbeat });
             });
         }
 
@@ -118,8 +118,14 @@ namespace IsThereAnybodyOutThere.Actors
             public string MachineName { get; set; }
             public string Username { get; set; }
 
-            public List<Dictionary<string, object>> Heartbeats { get; set; } = new List<Dictionary<string, object>>();
+            public List<Heartbeat> Heartbeats { get; set; } = new List<Heartbeat>();
             public string ApplicationName { get; set; }
+
+            public class Heartbeat
+            {
+                public DateTime ReceivedAtUtc { get; set; }
+                public Dictionary<string, object> Data { get; set; }
+            }
         }
     }
 }

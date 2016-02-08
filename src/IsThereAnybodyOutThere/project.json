@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "compilationOptions": {
     "emitEntryPoint": true
@@ -16,7 +16,8 @@
   },
 
   "commands": {
-    "run": "IsThereAnybodyOutThere"
+    "run": "IsThereAnybodyOutThere",
+    "web": "Microsoft.AspNet.Server.Kestrel"
   },
 
   "frameworks": {

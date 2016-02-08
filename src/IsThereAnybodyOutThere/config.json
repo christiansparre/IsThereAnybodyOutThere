@@ -1,3 +1,4 @@
 ﻿{
-  "WebSocketAddress": "ws://0.0.0.0:5001"
+  "WebSocketAddress": "ws://0.0.0.0:5001",
+  "WebServerAddress": "http://localhost:5000"
 }

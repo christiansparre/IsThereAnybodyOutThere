@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Akka.Actor;
 using IsThereAnybodyOutThere.Client.Messages;
 
@@ -11,15 +12,17 @@ namespace IsThereAnybodyOutThere.Client.Actors
         private readonly string _applicationName;
         private readonly TimeSpan _heartBeatInterval;
         private readonly Func<Dictionary<string, object>> _onSendingHearbeat;
+        private readonly Action<string, Exception> _onError;
 
         private int _connectCount = 0;
 
-        public WebSocketClient(string endpoint, string applicationName, TimeSpan heartBeatInterval, Func<Dictionary<string, object>> onSendingHearbeat)
+        public WebSocketClient(string endpoint, string applicationName, TimeSpan heartBeatInterval, Func<Dictionary<string, object>> onSendingHearbeat, Action<string, Exception> onError = null)
         {
             _endpoint = endpoint;
             _applicationName = applicationName;
             _heartBeatInterval = heartBeatInterval;
             _onSendingHearbeat = onSendingHearbeat;
+            _onError = onError;
 
             Receive<ConnectionClosed>(closed =>
             {
@@ -31,6 +34,7 @@ namespace IsThereAnybodyOutThere.Client.Actors
             {
                 // Received error from child. Try to reconnect.
                 StartConnection();
+                _onError?.Invoke(error.Message, error.Exception);
             });
 
             Receive<ConnectionOpened>(open =>
@@ -44,6 +48,8 @@ namespace IsThereAnybodyOutThere.Client.Actors
                 _connectCount++;
                 Context.ActorOf(Props.Create(() => new WebSocketClientConnection(_endpoint, _applicationName, _heartBeatInterval, _onSendingHearbeat)), "connection+" + Guid.NewGuid()); // Generate a unique child name, previous child might still be closing down
             }, msg => msg == "CreateClientConnection");
+
+            Trace.WriteLine("Created WebSocketClient actor");
         }
 
         private void StartConnection()

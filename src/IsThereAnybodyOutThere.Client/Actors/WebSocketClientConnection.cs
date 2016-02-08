@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using Akka.Actor;
+using Akka.Event;
 using IsThereAnybodyOutThere.Client.Messages;
 using Newtonsoft.Json;
 using WebSocketSharp;
@@ -99,7 +101,7 @@ namespace IsThereAnybodyOutThere.Client.Actors
         protected override void PreRestart(Exception reason, object message)
         {
             _socket.Close();
-            Console.WriteLine("Restarting");
+            Trace.WriteLine("Restarting: " + reason.Message);
             base.PreRestart(reason, message);
         }
     }

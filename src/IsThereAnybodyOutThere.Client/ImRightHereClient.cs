@@ -18,14 +18,16 @@ namespace IsThereAnybodyOutThere.Client
         private readonly string _applicationName;
         private readonly TimeSpan _heartBeatInterval;
         private readonly Func<Dictionary<string, object>> _onSendingHearbeat;
+        private readonly Action<string, Exception> _onError;
         private ActorSystem _actorSystem;
 
-        public ImRightHereClient(string endpoint, string applicationName, TimeSpan heartBeatInterval, Func<Dictionary<string, object>> onSendingHearbeat)
+        public ImRightHereClient(string endpoint, string applicationName, TimeSpan heartBeatInterval, Func<Dictionary<string, object>> onSendingHearbeat, Action<string, Exception> onError = null)
         {
             _endpoint = endpoint;
             _applicationName = applicationName;
             _heartBeatInterval = heartBeatInterval;
             _onSendingHearbeat = onSendingHearbeat;
+            _onError = onError;
         }
 
 
@@ -37,7 +39,7 @@ namespace IsThereAnybodyOutThere.Client
             }
 
             _actorSystem = ActorSystem.Create("ImRightHereClient");
-            _actorSystem.ActorOf(Props.Create(() => new WebSocketClient(_endpoint, _applicationName, _heartBeatInterval, _onSendingHearbeat)), "client");
+            _actorSystem.ActorOf(Props.Create(() => new WebSocketClient(_endpoint, _applicationName, _heartBeatInterval, _onSendingHearbeat, _onError)), "client");
         }
 
         public void Stop()

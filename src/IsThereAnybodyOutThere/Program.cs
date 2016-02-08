@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
+using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Hosting.Internal;
 using Microsoft.Extensions.Configuration;
@@ -40,8 +41,14 @@ namespace IsThereAnybodyOutThere
         {
             try
             {
+                var temp = new ConfigurationBuilder()
+                    .AddJsonFile("config.json")
+                    .AddJsonFile("hosting.json", true)
+                    .Build();
+
                 var configProvider = new MemoryConfigurationProvider();
-                configProvider.Add("server.urls", "http://localhost:5000");
+                configProvider.Add("server.urls", temp["WebServerAddress"]);
+                configProvider.Add("webroot", temp.Get<string>("webroot", "wwwroot"));
 
                 var config = new ConfigurationBuilder()
                     .Add(configProvider)
@@ -50,7 +57,7 @@ namespace IsThereAnybodyOutThere
                 var builder = new WebHostBuilder(config);
                 builder.UseServer("Microsoft.AspNet.Server.Kestrel");
                 builder.UseStartup<Startup>();
-
+                
                 var hostingEngine = builder.Build();
                 _application = hostingEngine.Start();
             }
